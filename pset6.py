@@ -32,6 +32,16 @@ class MaxHeap:
             else:
                 return i * 2 + 2 
 
+
+    def perc_up(self, i):
+        while ((i - 1) // 2) > 0:
+            parent_i = (i - 1) // 2
+            if self.heap_lst[i] > self.heap_lst[parent_i]:
+                temp = self.heap_lst[parent_i]
+                self.heap_lst[parent_i] = self.heap_lst[i]
+                self.heap_lst[i] = temp
+            i = parent_i
+
  
     def perc_down(self, i):
         while(i * 2 + 1) < len(self.heap_lst):

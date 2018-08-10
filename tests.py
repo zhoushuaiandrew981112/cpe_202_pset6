@@ -79,6 +79,26 @@ class Test_pset6(unittest.TestCase):
         exp_lst = [6, 5, 4, 3, 2, 1, 0]
         self.assertEqual(heap.heap_lst, exp_lst)
 
+    def test_MaxHeap_perc_up(self):
+        
+        ints = [0, 1, 2, 3, 4, 5, 6]
+        heap = MaxHeap(ints)
+        heap.perc_up(6)
+        exp_lst = [6, 4, 5, 3, 1, 0, 2]
+        self.assertEqual(heap.heap_lst, exp_lst)
+
+        ints = [33, 66, 22, 77, 99, 11]
+        heap = MaxHeap(ints)
+        heap.perc_up(5)
+        exp_lst = [99, 77, 22, 33, 66, 11]
+        self.assertEqual(heap.heap_lst, exp_lst)
+
+        ints = [-77, -6, -4, -7, -9]
+        heap = MaxHeap(ints)
+        heap.perc_up(4)
+        exp_lst = [-4, -6, -77, -7, -9]
+        self.assertEqual(heap.heap_lst, exp_lst)
+        
 
     def test_MaxHeap_init(self):
         ints = [6, 5, 4, 3, 2, 1, 0]
