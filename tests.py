@@ -15,6 +15,23 @@ class Test_pset6(unittest.TestCase):
 
     """ test MaxHeap class """
 
+    def test_MaxHeap_get_heap(self):
+        
+        ints = [6, 5, 4, 3, 2, 1, 0]
+        heap = MaxHeap(ints)
+        exp_lst = [6, 5, 4, 3, 2, 1, 0]
+        self.assertEqual(heap.get_heap(), exp_lst)
+
+        ints = [-1, -2, -3, -4, -5]
+        heap = MaxHeap(ints)
+        exp_lst = [-1, -2, -3, -4, -5]
+        self.assertEqual(heap.get_heap(), exp_lst)
+
+        ints = [0]
+        heap = MaxHeap(ints)
+        exp_lst = [0]
+        self.assertEqual(heap.get_heap(), exp_lst)
+
     def test_Maxheap_max_child_index(self):
         ints = [0, 1, 2]
         heap = MaxHeap(ints)
@@ -125,6 +142,62 @@ class Test_pset6(unittest.TestCase):
         heap = MaxHeap(ints)
         exp_lst = [6, 3, 5, 1, 0, 2]
         self.assertEqual(heap.heap_lst, exp_lst)
+
+
+    def test_MaxHeap_insert(self):
+
+        #        6                7
+        #      /   \            /   \
+        #     5     4          6     4
+        #    / \   / \       /  \   /  \
+        #   3   2 1   0     5    2 1    0
+        #  /               /
+        # 7  <--- new_int 3
+        ints = [6, 5, 4, 3, 2, 1, 0]
+        heap = MaxHeap(ints)
+        new_int = 7
+        heap.insert(new_int)
+        exp_lst = [7, 6, 4, 5, 2, 1, 0, 3]
+        self.assertEqual(heap.heap_lst, exp_lst)
+
+        ints = [3, 5, 1, 7, 8, 9, 2]
+        heap = MaxHeap(ints)
+        new_int = 100
+        heap.insert(new_int)
+        exp_lst = [100, 9, 3, 8, 5, 1, 2, 7]
+        self.assertEqual(heap.heap_lst, exp_lst)
+
+        ints = [-22, -74, -8, -1, -7, 0]
+        heap = MaxHeap(ints)
+        new_int = 200
+        heap.insert(new_int)
+        exp_lst = [200, -1, 0, -74, -7, -22, -8]
+        self.assertEqual(heap.heap_lst, exp_lst)
+
+    def test_MaxHeap_delet(self):
+        
+        ints = [6, 5, 4, 3, 2, 1, 0]
+        heap = MaxHeap(ints)
+        self.assertEqual(heap.delete(), 6)
+        exp_lst = [5, 3, 4, 0, 2, 1]
+        self.assertEqual(heap.heap_lst, exp_lst)
+
+        ints = [44, 11, 66, 77, 88, 33, 0]
+        heap = MaxHeap(ints)
+        self.assertEqual(heap.delete(), 88)
+        exp_lst = [77, 44, 66, 0, 11, 33]
+        self.assertEqual(heap.heap_lst, exp_lst)
+
+        ints = [0, -2, 4, 99, -5, -3, 88]
+        heap = MaxHeap(ints)
+        self.assertEqual(heap.delete(), 99)
+        exp_lst = [88, 0, 4, -2, -5, -3]
+        self.assertEqual(heap.heap_lst, exp_lst)
+
+
+
+
+
 
 
 

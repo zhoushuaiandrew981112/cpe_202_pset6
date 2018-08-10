@@ -21,6 +21,10 @@ class MaxHeap:
         self.heap_lst = self.heapify(self.heap_lst)
 
 
+    def get_heap(self):
+        return self.heap_lst
+
+
     def max_child_index(self, i):
         if i * 2 + 2 > len(self.heap_lst) - 1:
             return i * 2 + 1
@@ -34,7 +38,7 @@ class MaxHeap:
 
 
     def perc_up(self, i):
-        while ((i - 1) // 2) > 0:
+        while ((i - 1) // 2) >= 0:
             parent_i = (i - 1) // 2
             if self.heap_lst[i] > self.heap_lst[parent_i]:
                 temp = self.heap_lst[parent_i]
@@ -59,4 +63,40 @@ class MaxHeap:
             self.perc_down(i)
             i = i - 1
         return self.heap_lst
+
+
+    def insert(self, new_int):
+        self.heap_lst.append(new_int)
+        self.perc_up(len(self.heap_lst) - 1)
+
+
+    def delete(self):
+        result = self.heap_lst[0]
+        self.heap_lst[0] = self.heap_lst[len(self.heap_lst) - 1]
+        self.heap_lst.pop()
+        self.perc_down(0)
+        return result
+
+
+    def create_tree(self):
+        root_node = TreeNode(self.delet())
+        current = root_node
+        while len(self.heap_lst) >= 0:
+            priority = self.delete()
+            new_node = TreeNode(priority)
+            while current != None:
+                if priority < current.priority:
+                    if current.l_child == None:
+                        current.l_child = new_node
+                    else:
+                        current = current.l_child
+                elif priority > current.priority:
+                    if current.r_chiild == None:
+                        current.r_child = new_Node
+                    else:
+                        current = current.r_child
+        return root_node
+
+
+
         
