@@ -248,7 +248,19 @@ class Test_pset6(unittest.TestCase):
         current_1 = current_6.l_child
         current_0 = current_6.r_child
 
-        self.assertEqual(current_
+        self.assertEqual(current_10.priority, 10)
+        self.assertEqual(current_9.priority, 9)
+        self.assertEqual(current_8.priority, 8)
+        self.assertEqual(current_7.priority, 7)
+        self.assertEqual(current_6.priority, 6)
+        self.assertEqual(current_5.priority, 5)
+        self.assertEqual(current_4.priority, 4)
+        self.assertEqual(current_3.priority, 3)
+        self.assertEqual(current_2.priority, 2)
+        self.assertEqual(current_1.priority, 1)
+        self.assertEqual(current_0.priority, 0)
+
+
     def test_MaxHeap_heap_sort(self):
         
         ints = [2, 4, 3, 6, 7, 8, 1, 0]
