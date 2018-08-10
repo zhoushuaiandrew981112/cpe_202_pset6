@@ -78,8 +78,20 @@ class MaxHeap:
         return result
 
 
+    def create_helper(self, node, i):
+        size = len(self.heap_lst)
+        if i * 2 + 1 < size:
+            node.l_child = TreeNode(self.heap_lst[i * 2 + 1])
+            self.create_helper(node.l_child, i * 2 + 1)
+        if i * 2 + 2 < size:
+            node.r_child = TreeNode(self.heap_lst[i * 2 + 2])
+            self.create_helper(node.r_child, i * 2 + 2)
+
+
     def create_tree(self):
-        pass
+        root = TreeNode(self.heap_lst[0])
+        self.create_helper(root, 0)
+        return root
 
 
     def sort_heap(self):

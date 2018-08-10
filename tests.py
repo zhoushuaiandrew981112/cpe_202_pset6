@@ -194,7 +194,7 @@ class Test_pset6(unittest.TestCase):
         exp_lst = [88, 0, 4, -2, -5, -3]
         self.assertEqual(heap.heap_lst, exp_lst)
 
-    def BLOCKED_test_MaxHeap_create_tree(self):
+    def test_MaxHeap_create_tree(self):
 
         ints = [3, 2, 1]
         heap = MaxHeap(ints)
@@ -210,22 +210,45 @@ class Test_pset6(unittest.TestCase):
         heap = MaxHeap(ints)
         root = heap.create_tree()
         current_5 = root
-        current_3 = current_3.l_child
-        current_4 = current_3.r_child
+        current_3 = current_5.l_child
+        current_4 = current_5.r_child
         self.assertEqual(current_5.priority, 5)
         self.assertEqual(current_3.priority, 3)
-        self.assertEqual(current_3.priority, 4)
+        self.assertEqual(current_4.priority, 4)
 
         ints = [9, 8, 7]
         heap = MaxHeap(ints)
         root = heap.create_tree()
         current_9 = root
-        current_8 = current_8.l_child
-        current_7 = current_7.r_child
+        current_8 = current_9.l_child
+        current_7 = current_9.r_child
         self.assertEqual(current_9.priority, 9)
         self.assertEqual(current_8.priority, 8)
         self.assertEqual(current_7.priority, 7)
 
+        #                      10
+        #                   /      \
+        #                 9          8
+        #               /  \        /  \
+        #             7     6      5    4
+        #            / \   / \
+        #           3   2 1   0
+        ints= [10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
+        heap = MaxHeap(ints)
+        root = heap.create_tree()
+        current_10 = root
+        current_9 = current_10.l_child
+        current_8 = current_10.r_child
+        current_7 = current_9.l_child
+        current_6 = current_9.r_child
+        current_5 = current_8.l_child
+        current_4 = current_8.r_child
+        current_3 = current_7.l_child
+        current_2 = current_7.r_child
+        current_1 = current_6.l_child
+        current_0 = current_6.r_child
+
+        self.assertEqual(current_
     def test_MaxHeap_heap_sort(self):
         
         ints = [2, 4, 3, 6, 7, 8, 1, 0]
