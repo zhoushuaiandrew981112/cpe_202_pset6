@@ -194,11 +194,57 @@ class Test_pset6(unittest.TestCase):
         exp_lst = [88, 0, 4, -2, -5, -3]
         self.assertEqual(heap.heap_lst, exp_lst)
 
+    def BLOCKED_test_MaxHeap_create_tree(self):
 
+        ints = [3, 2, 1]
+        heap = MaxHeap(ints)
+        root = heap.create_tree()
+        current_3 = root
+        current_2 = current_3.l_child
+        current_1 = current_3.r_child
+        self.assertEqual(current_3.priority, 3)
+        self.assertEqual(current_2.priority, 2)
+        self.assertEqual(current_1.priority, 1)
+        
+        ints = [5, 3, 4]
+        heap = MaxHeap(ints)
+        root = heap.create_tree()
+        current_5 = root
+        current_3 = current_3.l_child
+        current_4 = current_3.r_child
+        self.assertEqual(current_5.priority, 5)
+        self.assertEqual(current_3.priority, 3)
+        self.assertEqual(current_3.priority, 4)
 
+        ints = [9, 8, 7]
+        heap = MaxHeap(ints)
+        root = heap.create_tree()
+        current_9 = root
+        current_8 = current_8.l_child
+        current_7 = current_7.r_child
+        self.assertEqual(current_9.priority, 9)
+        self.assertEqual(current_8.priority, 8)
+        self.assertEqual(current_7.priority, 7)
 
+    def test_MaxHeap_heap_sort(self):
+        
+        ints = [2, 4, 3, 6, 7, 8, 1, 0]
+        heap = MaxHeap(ints)
+        exp_lst = [8, 7, 6, 4, 3, 2, 1, 0]
+        act_lst = heap.sort_heap()
+        self.assertEqual(act_lst, exp_lst) 
 
+        ints = [1, 3, 5, 7, 9, 8, 6, 4, 2, 0]
+        heap = MaxHeap(ints)
+        exp_lst = [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
+        act_lst = heap.sort_heap()
+        self.assertEqual(act_lst, exp_lst) 
 
+        ints = [0, 1, 2, 3, 4, 5, 6, 7, 8]
+        heap = MaxHeap(ints)
+        exp_lst = [8, 7, 6, 5, 4, 3, 2, 1, 0]
+        act_lst = heap.sort_heap()
+        self.assertEqual(act_lst, exp_lst) 
 
 
 if __name__ == "__main__":

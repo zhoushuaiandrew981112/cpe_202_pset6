@@ -79,24 +79,14 @@ class MaxHeap:
 
 
     def create_tree(self):
-        root_node = TreeNode(self.delet())
-        current = root_node
-        while len(self.heap_lst) >= 0:
-            priority = self.delete()
-            new_node = TreeNode(priority)
-            while current != None:
-                if priority < current.priority:
-                    if current.l_child == None:
-                        current.l_child = new_node
-                    else:
-                        current = current.l_child
-                elif priority > current.priority:
-                    if current.r_chiild == None:
-                        current.r_child = new_Node
-                    else:
-                        current = current.r_child
-        return root_node
+        pass
 
+
+    def sort_heap(self):
+        result_lst = []
+        while len(self.heap_lst) > 0:
+            result_lst.append(self.delete())
+        return result_lst
 
 
         
