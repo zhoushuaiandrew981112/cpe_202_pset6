@@ -96,18 +96,12 @@ class MaxHeap:
         else:
             return None
 
-    """
     def sort_heap(self):
-        result_lst = []
-        while len(self.heap_lst) > 0:
-            result_lst.append(self.delete())
-        return result_lst
-    """
-
-    def sort_heap(self):
+        temp = list(self.heap_lst)
         result_lst = []
         while len(self.heap_lst) > 0:
             result_lst = [self.delete()] + result_lst
+        self.heap_lst = temp
         return result_lst
 
         
